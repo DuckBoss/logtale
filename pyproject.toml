@@ -3,20 +3,21 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "example_package_YOUR_USERNAME_HERE"
+name = "tale_duckboss"
 version = "0.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="DuckBoss" },
 ]
-description = "A small example package"
+description = "A simple, easy to use python logging framework that builds on top of the built-in logger module"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Operating System :: OS Independent",
+    "Topic :: System :: Logging",
 ]
 
 [project.urls]
-Homepage = "https://github.com/pypa/sampleproject"
-Issues = "https://github.com/pypa/sampleproject/issues"
+Homepage = "https://github.com/DuckBoss/tale"
+Issues = "https://github.com/DuckBoss/tale/issues"

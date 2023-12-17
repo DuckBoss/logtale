@@ -10,7 +10,7 @@ class LogFilter(logging.Filter):
 
     def filter(self, record: logging.LogRecord):
         record.msg = \
-            f"{'['+self._prepend+']: ' if self._prepend is not None else ''}" + \
+            f"{'['+self._prepend+']::' if self._prepend is not None else ''}" + \
             record.msg + \
             f"{'::['+self._postpend+']' if self._postpend is not None else ''}"
         return True

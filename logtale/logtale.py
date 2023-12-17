@@ -54,21 +54,20 @@ class LogTale(metaclass=SingletonMeta):
         return _cfg_instance
 
     def initialize_logger(self, software_name: str, software_version: str) -> logging.Logger:
-        _log_file_dir: pathlib.Path = pathlib.Path.cwd() / (self._config["output"]["file"]["path"]) / software_version
+        _log_file_dir: pathlib.Path = pathlib.Path.cwd() / (self._config["output"]["file"]["path"])
 
         # Enable file logging:
         _selected_file_level: str = self._config["output"]["file"]["level"]
         _enable_file_log = _selected_file_level.upper() != "NONE" and bool(self._config["output"]["file"]["enable"])
         if _enable_file_log:
             pathlib.Path.mkdir(_log_file_dir, parents=True, exist_ok=True)
-        
+
         # Enable console logging:
         _selected_console_level: str = self._config["output"]["console"]["level"]
         _enable_console_log = _selected_console_level.upper() != "NONE" and bool(self._config["output"]["console"]["enable"])
 
         _logger = logging.getLogger(software_name)
         _logger.setLevel(logging.DEBUG)
-        _logger.addFilter(filter.LogFilter(prepend_text=software_name))
 
         if _enable_file_log:
             file_handler = self.get_file_handler(software_version)
@@ -87,7 +86,7 @@ class LogTale(metaclass=SingletonMeta):
 
         if not _logger.hasHandlers():
             raise RuntimeError("No log handlers have been initialized.")
-        
+
         # Make other loggers quiet unless there's a critical issue:
         for log_name in logging.Logger.manager.loggerDict.keys():
             if log_name != software_name:
@@ -109,7 +108,7 @@ class LogTale(metaclass=SingletonMeta):
     def get_file_handler(self, software_version: str) -> Optional[logging.FileHandler]:
         _logging_formatter = formatter.FileLogFormatter(fmt=self._config["output"]["file"]["format"])
         _log_name: str = self._config["output"]["file"]["name"] % (software_version, int(time.time()))
-        _log_location: pathlib.Path = pathlib.Path.cwd() / self._config["output"]["file"]["path"] / software_version
+        _log_location: pathlib.Path = pathlib.Path.cwd() / self._config["output"]["file"]["path"]
         _log_level: str = self._config["output"]["file"]["level"]
         _log_location_path: pathlib.Path = (_log_location / _log_name).resolve()
 

@@ -1,8 +1,12 @@
-import logtale.logtale as t
+import logtale.logtale as tale
+import logtale.filter as filter
 
 
 def main():
-    logger = t.LogTale("example", "v0.0.1", "./example.toml").logger
+    logtale = tale.LogTale("example", "0.0.1", "./example.toml")
+    logger = logtale.logger.getChild(__name__)
+    logger.addFilter(filter.LogFilter(prepend_text=__name__))
+
     logger.debug("test - debug")
     logger.info("test - info")
     logger.warning("test - warning")

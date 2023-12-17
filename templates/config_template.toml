@@ -10,7 +10,7 @@ enable = true
 level = "DEBUG"
 path = "/tmp/"
 format = "(%(asctime)s)[%(name)s][%(levelname)s]::%(message)s"
-name = "example_%s_%s.log"
+name = "example.log"
 
 [output.console]
 enable = true

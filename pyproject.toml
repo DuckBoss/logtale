@@ -17,8 +17,6 @@ dependencies = [
 ]
 keywords = ["python", "logging", "log", "logger"]
 classifiers = [
-    # Development stage
-    "Development Status :: 3 - Alpha",
     # License
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     # Supported python versions

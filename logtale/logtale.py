@@ -3,7 +3,6 @@ import pathlib
 import sys
 import threading
 import toml
-import time
 from typing import Optional
 
 from logtale  import formatter
@@ -52,7 +51,7 @@ class LogTale(metaclass=SingletonMeta):
             raise toml_exc
         return _cfg_instance
 
-    def initialize_logger(self, software_name: str, software_version: str) -> logging.Logger:
+    def initialize_logger(self, software_name: str) -> logging.Logger:
         _log_file_dir: pathlib.Path = pathlib.Path.cwd() / (self._config["output"]["file"]["path"])
 
         # Enable file logging:
@@ -69,7 +68,7 @@ class LogTale(metaclass=SingletonMeta):
         _logger.setLevel(logging.DEBUG)
 
         if _enable_file_log:
-            file_handler = self.get_file_handler(software_version)
+            file_handler = self.get_file_handler()
             if file_handler is not None:
                 _logger.addHandler(file_handler)
                 self._log_file_handler = file_handler
@@ -104,9 +103,9 @@ class LogTale(metaclass=SingletonMeta):
         console_handler.setFormatter(_logging_formatter)
         return console_handler
 
-    def get_file_handler(self, software_version: str) -> Optional[logging.FileHandler]:
+    def get_file_handler(self) -> Optional[logging.FileHandler]:
         _logging_formatter = formatter.FileLogFormatter(fmt=self._config["output"]["file"]["format"])
-        _log_name: str = self._config["output"]["file"]["name"] % (software_version, int(time.time()))
+        _log_name: str = self._config["output"]["file"]["name"]
         _log_location: pathlib.Path = pathlib.Path.cwd() / self._config["output"]["file"]["path"]
         _log_level: str = self._config["output"]["file"]["level"]
         _log_location_path: pathlib.Path = (_log_location / _log_name).resolve()

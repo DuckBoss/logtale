@@ -6,7 +6,6 @@ import toml
 import time
 from typing import Optional
 
-from logtale import utiltity
 from logtale  import formatter
 from logtale import filter
 

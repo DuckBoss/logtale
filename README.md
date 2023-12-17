@@ -8,9 +8,9 @@ pip install logtale
 
 ### Usage
 ``` python
-import logtale
+import logtale.logtale as t
 
-logger = logtale.LogTale("<my_software_name>", "<my_software_version>", "<log_cfg_path>").logger
+logger = t.LogTale("<my_software_name>", "<my_software_version>", "<log_cfg_path>").logger
 logger.debug("test - debug")
 logger.info("test - info")
 logger.warning("test - warning")

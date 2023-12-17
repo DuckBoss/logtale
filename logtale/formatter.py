@@ -7,7 +7,12 @@ if TYPE_CHECKING:
 
 
 class FileLogFormatter(logging.Formatter):
-    def __init__(self, fmt: str | None = None, datefmt: str | None = None, style: "_FormatStyle" = "%", validate: bool = True, *, defaults: Mapping[str, Any] | None = None) -> None:
+    def __init__(self, 
+                 fmt: str | None = None, 
+                 datefmt: str | None = None, 
+                 style: "_FormatStyle" = "%", 
+                 validate: bool = True, *, 
+                 defaults: Mapping[str, Any] | None = None) -> None:
         super().__init__(fmt, datefmt, style, validate, defaults=defaults)
 
 class ConsoleLogFormatter(logging.Formatter):

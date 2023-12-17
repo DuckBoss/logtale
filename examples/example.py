@@ -1,8 +1,8 @@
-import tale
+import logtale
 
 
 def main():
-    logger = tale.Tale("example", "v0.0.1", "./example.toml").logger
+    logger = logtale.LogTale("example", "v0.0.1", "./example.toml").logger
     logger.debug("test - debug")
     logger.info("test - info")
     logger.warning("test - warning")

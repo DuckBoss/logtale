@@ -6,9 +6,9 @@ import toml
 import time
 from typing import Optional
 
-from src import utiltity
-from src  import formatter
-from src import filter
+from logtale import utiltity
+from logtale  import formatter
+from logtale import filter
 
 
 class SingletonMeta(type):
@@ -21,8 +21,8 @@ class SingletonMeta(type):
                 cls._instance = super().__call__(*args, **kwargs)
         return cls._instance
 
-class Tale(metaclass=SingletonMeta):
-    _instance: Optional["Tale"] = None
+class LogTale(metaclass=SingletonMeta):
+    _instance: Optional["LogTale"] = None
     _config = None
     _logger: logging.Logger
     
@@ -36,12 +36,12 @@ class Tale(metaclass=SingletonMeta):
     def __init__(self, software_name: str, software_version: str, config_file_path: str) -> None:
         self._config = self.initialize_log_config(config_file_path)
         if self._config is None:
-            raise RuntimeError("tale failed to initialize log config.")
+            raise RuntimeError("logtale failed to initialize log config.")
         self._logger = self.initialize_logger(software_name, software_version)
 
     def initialize_log_config(self, config_file_path: str) -> dict:
         if not config_file_path:
-            raise ValueError(f"invalid tale config path provided: '{config_file_path}'")
+            raise ValueError(f"invalid logtale config path provided: '{config_file_path}'")
         _cfg_instance: Optional[dict] = None
         try:
             with open(config_file_path, 'r') as log_cfg:

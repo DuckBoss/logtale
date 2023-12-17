@@ -1,16 +1,16 @@
-###  Tale - A python logging framework
+###  LogTale - A python logging framework
 A simple, easy to use logging framework that builds on top of the built-in logger module.
 
 ### Installation
 ``` bash
-pip install tale
+pip install logtale
 ```
 
 ### Usage
 ``` python
-import tale
+import logtale
 
-logger = tale.Tale("<my_software_name>", "<my_software_version>", "<log_cfg_path>").logger
+logger = logtale.LogTale("<my_software_name>", "<my_software_version>", "<log_cfg_path>").logger
 logger.debug("test - debug")
 logger.info("test - info")
 logger.warning("test - warning")
@@ -50,10 +50,10 @@ use_colors = true # enable/disable the use of colors for log levels. colors can 
 Check the `examples` directory for example scripts and configuration files.
 
 ``` python
-import tale
+import logtale
 
 def main():
-    logger = tale.Tale("example", "v0.0.1", "./example.toml").logger
+    logger = logtale.LogTale("example", "v0.0.1", "./example.toml").logger
     logger.debug("test - debug")
     logger.info("test - info")
     logger.warning("test - warning")

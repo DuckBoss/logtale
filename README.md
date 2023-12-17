@@ -64,8 +64,8 @@ if __name__ == "__main__":
     main()
 ```
 
-Example log console output:
+#### Example log console output
 ![example console output image](./examples/example_console_output.png)
 
-Example log file output:
+#### Example log file output
 ![example file output image](./examples/example_file_output.png)

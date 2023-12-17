@@ -1,9 +1,9 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools", "setuptools-scm", "setuptools-git-versioning"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "logtale"
+name = "logtale_DuckBoss"
 dynamic = ["version"]
 authors = [
     {name = "Jason Jerome"}
@@ -46,8 +46,8 @@ Changelog = "https://github.com/DuckBoss/logtale/blob/master/CHANGELOG.md"
 [tool.setuptools.packages.find]
 include = ["logtale"]
 
-[tool.setuptools.dynamic]
-version = {attr = "logtale.VERSION"}
+[tool.setuptools-git-versioning]
+enabled = true
 
 [tool.ruff]
 line-length = 150

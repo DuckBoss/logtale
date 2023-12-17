@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm", "setuptools-git-versioning"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "logtale_DuckBoss"
+name = "logtale"
 dynamic = ["version"]
 authors = [
     {name = "Jason Jerome"}

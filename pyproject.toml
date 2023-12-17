@@ -43,6 +43,9 @@ Repository = "https://github.com/DuckBoss/tale.git"
 Issues = "https://github.com/DuckBoss/tale/issues"
 Changelog = "https://github.com/DuckBoss/tale/blob/master/CHANGELOG.md"
 
+[tool.setuptools.dynamic]
+version = {attr = "tale_duckboss.VERSION"}
+
 [tool.ruff]
 line-length = 150
 exclude = ["**/__pycache__", "venv/", "build-tools/", "config/", "logs/", ".*"]

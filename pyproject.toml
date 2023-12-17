@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -11,6 +11,10 @@ authors = [
 description = "A simple, easy to use python logging framework that builds on top of the built-in logger module"
 readme = {file = "README.md", content-type = "text/markdown"}
 requires-python = ">=3.8"
+dependencies = [
+    "python-dotenv",
+    "toml"
+]
 keywords = ["python", "logging", "log", "logger"]
 classifiers = [
     # Development stage

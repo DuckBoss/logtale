@@ -7,7 +7,6 @@ import time
 from typing import Optional
 
 from logtale  import formatter
-from logtale import filter
 
 
 class SingletonMeta(type):

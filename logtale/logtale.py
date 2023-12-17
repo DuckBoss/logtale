@@ -6,7 +6,6 @@ import toml
 from typing import Optional
 
 from logtale import formatter
-from logtale import utility
 
 
 class SingletonMeta(type):

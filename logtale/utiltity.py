@@ -1,10 +1,4 @@
 from typing import Any, Dict
-from pathlib import Path
-
-def get_version() -> str:
-    with open(Path(__file__).parent.parent / "VERSION") as version_file:
-        version = version_file.readline().strip("\n")
-        return version
 
 
 def get_log_levels_as_dict(config: Dict[str, Any]) -> Dict[str, int]:

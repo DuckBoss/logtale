@@ -109,7 +109,7 @@ class LogTale(metaclass=SingletonMeta):
 
     def get_file_handler(self, software_version: str) -> Optional[logging.FileHandler]:
         _logging_formatter = formatter.FileLogFormatter(fmt=self._config["output"]["file"]["format"])
-        _log_name: str = self._config["output"]["file"]["name"] % (utiltity.get_version(), int(time.time()))
+        _log_name: str = self._config["output"]["file"]["name"] % (software_version, int(time.time()))
         _log_location: pathlib.Path = pathlib.Path.cwd() / self._config["output"]["file"]["path"] / software_version
         _log_level: str = self._config["output"]["file"]["level"]
         _log_location_path: pathlib.Path = (_log_location / _log_name).resolve()

@@ -1,0 +1,19 @@
+[output.colors]
+DEBUG = '\033[1;36m' # CYAN: \x1b[36:36m
+INFO = '\033[1;38m'  # GREY: \x1b[38;20m
+WARNING = '\033[1;33m' # YELLOW: \x1b[33;20m
+ERROR = '\033[1;35m' # RED: \x1b[31;20m
+CRITICAL = '\033[1;31m'  # BOLD RED: \x1b[31;1m
+
+[output.file]
+enable = true
+level = "DEBUG"
+path = "logs/"
+format = "(%(asctime)s)[%(name)s][%(levelname)s]::%(message)s"
+name = "example_%s_%s.log"
+
+[output.console]
+enable = true
+level = "DEBUG"
+format = "[%(levelname)s]::%(message)s"
+use_colors = true

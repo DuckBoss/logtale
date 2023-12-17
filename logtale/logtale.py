@@ -5,7 +5,8 @@ import threading
 import toml
 from typing import Optional
 
-from logtale  import formatter
+from logtale import formatter
+from logtale import utility
 
 
 class SingletonMeta(type):
@@ -30,11 +31,11 @@ class LogTale(metaclass=SingletonMeta):
     def logger(self):
         return self._logger
 
-    def __init__(self, software_name: str, software_version: str, config_file_path: str) -> None:
+    def __init__(self, software_name: str, config_file_path: str) -> None:
         self._config = self.initialize_log_config(config_file_path)
         if self._config is None:
             raise RuntimeError("logtale failed to initialize log config.")
-        self._logger = self.initialize_logger(software_name, software_version)
+        self._logger = self.initialize_logger(software_name)
 
     def initialize_log_config(self, config_file_path: str) -> dict:
         if not config_file_path:

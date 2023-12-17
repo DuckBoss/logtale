@@ -63,6 +63,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
 Example log console output:
 ![example console output image](./examples/example_console_output.png)
 

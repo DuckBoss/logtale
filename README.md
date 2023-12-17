@@ -50,6 +50,7 @@ use_colors = true # enable/disable the use of colors for log levels. colors can 
 Check the `examples` directory for example scripts and configuration files.
 
 ``` python
+# ./examples/example.py
 import logtale.logtale as t
 
 def main():

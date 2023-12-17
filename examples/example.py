@@ -5,7 +5,7 @@ import logtale.filter as filter
 def main():
     logtale = tale.LogTale("example", "0.0.1", "./example.toml")
     logger = logtale.logger.getChild(__name__)
-    logger.addFilter(filter.LogFilter(prepend_text=__name__))
+    logger.addFilter(filter.LogFilter(prepend_text="ExamplePrepend"))
 
     logger.debug("test - debug")
     logger.info("test - info")

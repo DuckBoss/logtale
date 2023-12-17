@@ -7,15 +7,29 @@ pip install logtale
 ```
 
 ### Usage
+Simple Usage:
 ``` python
-import logtale.logtale as t
+import logtale.logtale as tale
 
-logger = t.LogTale("<my_software_name>", "<my_software_version>", "<log_cfg_path>").logger
-logger.debug("test - debug")
-logger.info("test - info")
-logger.warning("test - warning")
-logger.error("test - error")
-logger.critical("test - critical")
+
+def main():
+    logtale = tale.LogTale("example", "0.0.1", "./example.toml")
+    logger = logtale.logger.getChild(__name__)
+
+    logger.debug("test - debug")
+    logger.info("test - info")
+    logger.warning("test - warning")
+    logger.error("test - error")
+    logger.critical("test - critical")
+
+if __name__ == "__main__":
+    main()
+```
+
+Prepend/Postpend text to the log message:
+``` python
+logger.addFilter(filter.LogFilter(prepend_text="ExamplePrepend"))
+logger.addFilter(filter.LogFilter(postpend_text="ExamplePostpend"))
 ```
 
 ### Configuration File
@@ -51,10 +65,15 @@ Check the `examples` directory for example scripts and configuration files.
 
 ``` python
 # ./examples/example.py
-import logtale.logtale as t
+import logtale.logtale as tale
+import logtale.filter as filter
+
 
 def main():
-    logger = t.LogTale("example", "v0.0.1", "./example.toml").logger
+    logtale = tale.LogTale("example", "0.0.1", "./example.toml")
+    logger = logtale.logger.getChild(__name__)
+    logger.addFilter(filter.LogFilter(prepend_text="ExamplePrepend"))
+
     logger.debug("test - debug")
     logger.info("test - info")
     logger.warning("test - warning")

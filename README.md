@@ -48,3 +48,23 @@ use_colors = true # enable/disable the use of colors for log levels. colors can 
 
 ### Examples
 Check the `examples` directory for example scripts and configuration files.
+
+``` python
+import tale
+
+def main():
+    logger = tale.Tale("example", "v0.0.1", "./example.toml").logger
+    logger.debug("test - debug")
+    logger.info("test - info")
+    logger.warning("test - warning")
+    logger.error("test - error")
+    logger.critical("test - critical")
+
+if __name__ == "__main__":
+    main()
+```
+Example log console output:
+![example console output image](./examples/example_output.png)
+
+Example log file output:
+![example file output image](./examples/example_file_output.png)

@@ -51,7 +51,7 @@ enable = true # enable/disable logging to a .log file (default=true)
 level = "DEBUG" # the base log level for logging to a file (default=DEBUG)
 path = "logs/" # the directory to create log files in (default=logs/)
 format = "(%(asctime)s)[%(name)s][%(levelname)s]::%(message)s" # the log message format to use for file logging
-name = "example_%s_%s.log" # the naming scheme of the log file, by default it's '<project_name>_<version>_<timestamp>.log'
+name = "example.log" # the naming scheme of the log file, by default it's '<project_name>_<version>_<timestamp>.log'
 
 [output.console]
 enable = true # enable/disable logging to the console (default=true)

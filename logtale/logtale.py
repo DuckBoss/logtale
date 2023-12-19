@@ -3,7 +3,7 @@ import pathlib
 import sys
 import threading
 import toml
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from logtale import formatter
 
@@ -18,17 +18,22 @@ class SingletonMeta(type):
                 cls._instance = super().__call__(*args, **kwargs)
         return cls._instance
 
+
 class LogTale(metaclass=SingletonMeta):
     _instance: Optional["LogTale"] = None
     _config = None
     _logger: logging.Logger
-    
+
     _log_file_handler: logging.Handler
     _log_console_handler: logging.Handler
 
     @property
-    def logger(self):
+    def logger(self) -> Optional[logging.Logger]:
         return self._logger
+
+    @property
+    def config(self) -> Optional[Dict[str, Any]]:
+        return self._config
 
     def __init__(self, software_name: str, config_file_path: str) -> None:
         self._config = self.initialize_log_config(config_file_path)
@@ -41,7 +46,7 @@ class LogTale(metaclass=SingletonMeta):
             raise ValueError(f"invalid logtale config path provided: '{config_file_path}'")
         _cfg_instance: Optional[dict] = None
         try:
-            with open(config_file_path, 'r') as log_cfg:
+            with open(config_file_path, "r") as log_cfg:
                 _cfg_instance = toml.load(log_cfg)
         except IOError as io_exc:
             raise io_exc
@@ -96,9 +101,9 @@ class LogTale(metaclass=SingletonMeta):
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(self._config["output"]["console"]["level"])
         _logging_formatter = formatter.ConsoleLogFormatter(
-            fmt=self._config["output"]["console"]["format"], 
+            fmt=self._config["output"]["console"]["format"],
             colors=self._config["output"]["colors"],
-            use_colors=bool(self._config["output"]["console"]["use_colors"])
+            use_colors=bool(self._config["output"]["console"]["use_colors"]),
         )
         console_handler.setFormatter(_logging_formatter)
         return console_handler

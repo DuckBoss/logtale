@@ -18,7 +18,7 @@ import logtale.logtale as tale
 
 def main():
     logtale = tale.LogTale("example", "./example.toml")
-    logger = logtale.logger.getChild(__name__)
+    logger = logtale.logger(__name__)
 
     logger.debug("test - debug")
     logger.info("test - info")
@@ -32,8 +32,8 @@ if __name__ == "__main__":
 
 Prepend/Postpend text to the log message:
 ``` python
-logger.addFilter(filter.LogFilter(prepend_text="ExamplePrepend"))
-logger.addFilter(filter.LogFilter(postpend_text="ExamplePostpend"))
+logger.addFilter(filter.LogAppendFilter(prepend_text="ExamplePrepend"))
+logger.addFilter(filter.LogAppendFilter(postpend_text="ExamplePostpend"))
 ```
 
 ### Configuration File
@@ -75,8 +75,8 @@ import logtale.filter as filter
 
 def main():
     logtale = tale.LogTale("example", "./example.toml")
-    logger = logtale.logger.getChild(__name__)
-    logger.addFilter(filter.LogFilter(prepend_text="ExamplePrepend"))
+    logger = logtale.logger(__name__)
+    logger.addFilter(filter.LogAppendFilter(prepend_text="ExamplePrepend"))
 
     logger.debug("test - debug")
     logger.info("test - info")

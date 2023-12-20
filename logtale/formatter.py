@@ -7,21 +7,21 @@ if TYPE_CHECKING:
 
 
 class FileLogFormatter(logging.Formatter):
-    def __init__(self, 
-                 fmt: str | None = None, 
-                 datefmt: str | None = None, 
-                 style: "_FormatStyle" = "%", 
-                 validate: bool = True, *, 
-                 defaults: Mapping[str, Any] | None = None) -> None:
+    def __init__(
+        self,
+        fmt: str | None = None,
+        datefmt: str | None = None,
+        style: "_FormatStyle" = "%",
+        validate: bool = True,
+        *,
+        defaults: Mapping[str, Any] | None = None,
+    ) -> None:
         super().__init__(fmt, datefmt, style, validate, defaults=defaults)
 
-class ConsoleLogFormatter(logging.Formatter):
-    RESET: str = "\033[0m" # "\x1b[0m"
-    LEVELS: Dict[int, str] = {}
 
-    test = {
-        "test": "\x1b[36:36m"
-    }
+class ConsoleLogFormatter(logging.Formatter):
+    RESET: str = "\033[0m"  # "\x1b[0m"
+    LEVELS: Dict[int, str] = {}
 
     def __init__(
         self,
@@ -47,4 +47,5 @@ class ConsoleLogFormatter(logging.Formatter):
                 if record.levelname == level_name:
                     log_color = self.LEVELS.get(record.levelno)
                     log_fmt = log_color + log_fmt + self.RESET
-        return log_fmt % record.__dict__
+        formatter = logging.Formatter(log_fmt)
+        return formatter.format(record)

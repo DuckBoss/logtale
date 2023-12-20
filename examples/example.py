@@ -13,5 +13,6 @@ def main():
     logger.error("test - error")
     logger.critical("test - critical")
 
+
 if __name__ == "__main__":
     main()

@@ -1,7 +1,9 @@
 ###  LogTale - A python logging framework
 A simple, easy to use logging framework that builds on top of the built-in logger module.
 
-[![PyPI version](https://badge.fury.io/py/logtale.svg)](https://pypi.org/project/logtale/0.0.7/)
+[![PyPI - Version](https://img.shields.io/pypi/v/logtale?color=green)](https://pypi.org/project/logtale)
+[![GitHub release (with filter)](https://img.shields.io/github/v/release/DuckBoss/logtale)](https://github.com/DuckBoss/logtale/releases)
+
 
 ### Installation
 ``` bash

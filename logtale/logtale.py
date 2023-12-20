@@ -2,7 +2,6 @@ import logging
 import pathlib
 import sys
 import threading
-from xml.sax.handler import property_encoding
 import toml
 from typing import Optional, Dict, Any
 
@@ -21,7 +20,7 @@ class SingletonMeta(type):
 
 
 class LogTale(metaclass=SingletonMeta):
-    config = None
+    config: Dict[str, Any] = None
     root_logger: logging.Logger
 
     file_handler: logging.Handler
@@ -30,7 +29,6 @@ class LogTale(metaclass=SingletonMeta):
     def logger(self, name: str) -> logging.Logger:
         return self.root_logger.getChild(name)
 
-    @property
     def __init__(self, software_name: str, config_file_path: str) -> None:
         self.config = self.initialize_log_config(config_file_path)
         if self.config is None:
